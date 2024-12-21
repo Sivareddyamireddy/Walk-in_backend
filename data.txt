@@ -1,0 +1,65 @@
+Dependencies
+    Express
+    Mongoose
+    Dotenv
+    Body-parser    input field nunchi vastunna data ni json format lo pass cheyyali
+    nodemon
+    Jwt token   email ni token kindhaki marchadaniki
+    bcrypt.js     password ni hash cheyyadaniki
+    multer        images ni add cheyyadaniki
+
+connected to database
+
+API Creation
+   Models
+        User: username, email, password
+        Company: companyName, location, category, description, image
+        Jobposting : jobRole, eligibility, skillsRequired, hiringDate, experience, interviewLocation, noOfOpenings, shift
+   Controller
+        userController
+        companyController
+        jobpostingController
+        
+
+   Routes
+        userRoutes
+        companyRoutes
+        jobpostingRoutes
+
+
+
+
+user 
+userRegistration:    localhost:4000/user/register
+userLogin:            localhost:4000/user/login
+getAllUsers:          localhost:4000/user/all-users
+
+
+
+company
+add company:       localhost:4000/company/add-company
+delete company     localhost:4000/company/delete-company/:companyId
+
+  "companyName":"Capgemini", 
+  "location":"Gachibowli", 
+  "category":["IT", "NON-IT"], 
+  "description":"It is a product-based company", 
+  "image":"example.jpg"
+
+Jobposting
+add Jobposting:                       localhost:4000/jobposting/add-jobpost/:companyId
+getJobpostingsByCompany               localhost:4000/jobposting/:companyId/jobpostings
+deleteJobposting                      localhost:4000/jobposting/delete-jobpost/:jobpostingid
+
+
+{
+  "jobRole": "Software Developer",
+  "eligibility": "B.Tech in CS/IT",
+  "skillsRequired": ["JavaScript", "Node.js", "React"],
+  "hiringDate": "2024-12-25",
+  "experience": "2-4 years",
+  "interviewLocation": "Hyderabad",
+  "ctc": "12 LPA",
+  "noOfOpenings": 5,
+  "shifts": "Day Shift"
+}
