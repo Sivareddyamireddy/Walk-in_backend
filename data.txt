@@ -31,7 +31,16 @@ API Creation
 
 user 
 userRegistration:    localhost:4000/user/register
+    {
+  "username":"sivareddy",
+  "email":"sivaredddy@gmail.com",
+  "password":"siva123"
+}
 userLogin:            localhost:4000/user/login
+        {
+  "email":"sivaredddy@gmail.com",
+  "password":"siva123"
+}
 getAllUsers:          localhost:4000/user/all-users
 
 
@@ -47,7 +56,7 @@ delete company     localhost:4000/company/delete-company/:companyId
   "image":"example.jpg"
 
 Jobposting
-add Jobposting:                       localhost:4000/jobposting/add-jobpost/:companyId
+add Jobposting:                       localhost:4000/jobposting/add-jobpost/companyId
 getJobpostingsByCompany               localhost:4000/jobposting/:companyId/jobpostings
 deleteJobposting                      localhost:4000/jobposting/delete-jobpost/:jobpostingid
 
