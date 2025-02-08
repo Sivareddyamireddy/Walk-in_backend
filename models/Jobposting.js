@@ -35,7 +35,7 @@ const jobpostingSchema = new mongoose.Schema({
         required: [true, 'Number of Openings is required'],
         min: [1, 'At least one opening is required']
     }, 
-    shifts: {
+    shift: {
         type: String,
         required: [true, 'Shifts information is required'],
 

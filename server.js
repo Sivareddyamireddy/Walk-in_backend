@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const companyRoutes = require('./routes/companyRoutes');
 const jobpostingRoutes = require('./routes/jobpostingRoutes');
 const path = require('path');
+const cors = require('cors');
 
 
 const app = express();
@@ -14,6 +15,8 @@ const app = express();
 //const PORT= 4000;
 
 dotEnv.config();
+app.use(cors())
+
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
     console.log("Mongodb connected successfully");
@@ -32,6 +35,6 @@ app.listen(PORT, ()=>{
     console.log(`server running on port ${PORT}`)
 })
 
-app.use('/', (req, res)=>{
-    res.send("<h1> Welcome to Walkin");
-})
+// app.use('/', (req, res)=>{
+//     res.send("<h1> Welcome to Walkin");
+// })

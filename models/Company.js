@@ -16,7 +16,8 @@ const companySchema = new mongoose.Schema({
         type : [
             {
                 type : String,
-                enum : ['IT', 'NON-IT']
+                //enum : ['IT', 'NON-IT']
+                required: [true, 'Category is required']
             },
         ],
     },

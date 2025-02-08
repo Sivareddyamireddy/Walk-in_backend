@@ -45,7 +45,10 @@ const userLogin = async(req, res)=>{
 
         const token = jwt.sign({userId: user._id}, secretKey, {expiresIn:"1h"})
 
-        res.status(200).json({message: "Login successfully", token});
+        const userId = user._id;
+
+
+        res.status(200).json({message: "Login successfully", token, userId });
         console.log(email, "this is token", token);
     } catch (error) {
         console.error(error);
@@ -63,19 +66,47 @@ const getAllUsers = async(req, res)=>{
     }
 }
 
-const getUserById = async(req, res)=>{
+// const getUserById = async(req, res)=>{
+//     const userId = req.params.id;
+//     try {
+//         const user = await User.findById(userId).populate('company');
+//         if(!user){
+//             return res.status(404).json({error:"user not found"})
+//         }
+//         const userCompanyId = user.company[0]._id;
+//         res.status(200).json({userCompanyId})
+//         console.log(userCompanyId);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({error:"Internal server error"})
+//     }
+// }
+
+const getUserById = async (req, res) => {
     const userId = req.params.id;
     try {
-        const user = await User.findById(userId);
-        if(!user){
-            return res.status(404).json({error:"user not found"})
+        const user = await User.findById(userId).populate('company');
+
+        // Check if user exists
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
         }
-        res.status(200).json({user})
+
+        // Ensure 'company' exists and is an array with at least one entry
+        if (!user.company || !Array.isArray(user.company) || user.company.length === 0) {
+            return res.status(404).json({ error: "Company details not found for this user" });
+        }
+
+        const userCompanyId = user.company[0]._id;
+        res.status(200).json({ userCompanyId });
+        console.log(userCompanyId);
     } catch (error) {
         console.error(error);
-        res.status(500).json({error:"Internal server error"})
+        res.status(500).json({ error: "Internal server error" });
     }
-}
+};
+
+
 
 
 module.exports = {userRegister, userLogin, getAllUsers, getUserById}

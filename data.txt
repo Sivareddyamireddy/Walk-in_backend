@@ -7,6 +7,7 @@ Dependencies
     Jwt token   email ni token kindhaki marchadaniki
     bcrypt.js     password ni hash cheyyadaniki
     multer        images ni add cheyyadaniki
+    cors
 
 connected to database
 

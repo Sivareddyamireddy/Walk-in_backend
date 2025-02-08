@@ -3,7 +3,7 @@ const Company = require('../models/Company')
 
 const addJobposting  = async(req, res)=>{
     try {
-        const {jobRole, eligibility, skillsRequired, hiringDate, experience, ctc, interviewLocation, noOfOpenings, shifts} = req.body;
+        const {jobRole, eligibility, skillsRequired, hiringDate, experience, ctc, interviewLocation, noOfOpenings, shift} = req.body;
         
         const companyId = req.params.companyId;
         const company = await Company.findById(companyId);
@@ -21,7 +21,7 @@ const addJobposting  = async(req, res)=>{
             ctc,
             interviewLocation, 
             noOfOpenings,
-            shifts,
+            shift,
             company: company._id
 
         })
